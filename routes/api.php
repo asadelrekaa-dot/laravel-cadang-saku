@@ -10,13 +10,9 @@ use App\Http\Controllers\Api\OutcomeController;
 use App\Http\Controllers\Api\WalletController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\TransactionController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
+Route::get('/user', [AuthController::class, 'getProfile'])->middleware('auth:sanctum');
 Route::put('/user', [AuthController::class, 'updateProfile'])->middleware('auth:sanctum');
 Route::put('/user/password', [AuthController::class, 'updatePassword'])->middleware('auth:sanctum');
 Route::post('/user/photo', [AuthController::class, 'updatePhoto'])->middleware('auth:sanctum');

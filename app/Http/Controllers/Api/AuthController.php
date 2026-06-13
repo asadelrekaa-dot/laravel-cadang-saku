@@ -121,6 +121,14 @@ class AuthController extends Controller
         ]);
     }
 
+    public function getProfile(Request $request)
+    {
+        return response()->json([
+            'status' => 'success',
+            'data' => $request->user(),
+        ]);
+    }
+
     // function buat login dengan google
    public function googleLogin(Request $request)
 {
